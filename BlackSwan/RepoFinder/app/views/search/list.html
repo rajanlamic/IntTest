@@ -1,0 +1,22 @@
+<p class="lead">
+    Lists {{ searchTerm}}
+</p>
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>Download URL</th>
+            <th>Description</th>
+            <th>Forks counts</th>
+            <th>Stargazers URL</th>
+            <th>Open issues count</th>
+        </tr>
+        <tr ng-repeat="item in searchResult">
+            <td>{{ item.downloads_url}}</td>
+            <td>{{ item.description}}</td>
+            <td>{{ item.forks_count}}</td>
+            <td>{{ item.stargazers_url}}</td>
+            <td>{{ item.open_issues_count}}</td>
+        </tr>
+    </table>
+</div>

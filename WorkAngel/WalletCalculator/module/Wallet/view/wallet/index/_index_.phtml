@@ -1,0 +1,192 @@
+<!--http://vitalets.github.io/angular-xeditable/-->
+<!--http://jsfiddle.net/NfPcH/28/-->
+
+<style>
+    div[ng-app] { margin: 10px; }
+</style>
+<script src="/js/angular.js"></script>
+<h4>Angular-xeditable Editable table (Bootstrap 3)</h4>
+<div ng-app="app" ng-controller="Ctrl">
+    <form editable-form name="tableform" onaftersave="saveTable()">
+
+        <!-- table -->
+        <table class="table table-bordered table-hover table-condensed" style="width: 80%">
+            <tr style="font-weight: bold">
+                <td style="width:40%">Name</td>
+                <td style="width:30%">Status</td>
+                <td style="width:30%">Group</td>
+            </tr>
+            <tr ng-repeat="user in users">
+                <td>
+                    <!-- editable username (text with validation) -->
+                    <span editable-text="user.name" e-focus-me="user.isFocused" e-form="tableform" onbeforesave="checkName($data)">
+                        {{ user.name || 'empty' }}
+                    </span>
+                </td>
+                <td>
+                    <!-- editable status (select-local) -->
+                    <span editable-select="user.status" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+                        {{ showStatus(user)}}
+                    </span>
+                </td>
+                <td>
+                    <!-- editable group (select-remote) -->
+                    <span editable-select="user.group" e-form="tableform" onshow="loadGroups()" e-ng-options="g.id as g.text for g in groups">
+                        {{ showGroup(user)}}
+                    </span>
+                </td>
+            </tr>
+        </table>
+
+        <!-- buttons -->
+        <div style="white-space: nowrap">
+            <button type="button" class="btn btn-default" ng-click="addUser()" >Add</button>
+            <button type="submit" ng-show="tableform.$visible" ng-disabled="tableform.$waiting" class="btn btn-primary">save</button>
+            <button type="button" class="btn btn-default" ng-show="!tableform.$visible" ng-click="tableform.$show()">
+                edit
+            </button>
+            <button type="button" ng-show="tableform.$visible" ng-disabled="tableform.$waiting" ng-click="cancelChanges()" class="btn btn-default">cancel
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+<script>
+    var app = angular.module("app", ["xeditable", "ngMockE2E"]);
+
+    app.run(function(editableOptions) {
+        editableOptions.theme = 'bs3';
+    });
+
+    app.directive('focusMe', function($timeout, $parse) {
+        return {
+            //scope: true,   // optionally create a child scope
+            link: function(scope, element, attrs) {
+                var model = $parse(attrs.focusMe);
+                scope.$watch(model, function(value) {
+                    if (value === true) {
+                        $timeout(function() {
+                            element[0].focus();
+                        });
+                    }
+                });
+                // to address @blesh's comment, set attribute value to 'false'
+                // on blur event:
+                element.bind('blur', function() {
+                    scope.$apply(model.assign(scope, false));
+                });
+            }
+        };
+    });
+
+    app.controller('Ctrl', function($scope, $filter, $q, $http, $timeout) {
+
+        var itemsPendingSave = [];
+
+        $scope.users = [
+            {id: 1, name: 'awesome user1', status: 2, group: 4, groupName: 'admin'},
+            {id: 2, name: 'awesome user2', status: undefined, group: 3, groupName: 'vip'},
+            {id: 3, name: 'awesome user3', status: 2, group: null}
+        ];
+
+        $scope.statuses = [
+            {value: 1, text: 'status1'},
+            {value: 2, text: 'status2'},
+            {value: 3, text: 'status3'},
+            {value: 4, text: 'status4'}
+        ];
+
+        $scope.groups = [];
+        $scope.loadGroups = function() {
+            return $scope.groups.length ? null : $http.get('/groups').success(function(data) {
+                $scope.groups = data;
+            });
+        };
+
+        $scope.showGroup = function(user) {
+            if (user.group && $scope.groups.length) {
+                var selected = $filter('filter')($scope.groups, {id: user.group});
+                return selected.length ? selected[0].text : 'Not set';
+            } else {
+                return user.groupName || 'Not set';
+            }
+        };
+
+        $scope.showStatus = function(user) {
+            var selected = [];
+            if (user.status) {
+                selected = $filter('filter')($scope.statuses, {value: user.status});
+            }
+            return selected.length ? selected[0].text : 'Not set';
+        };
+
+        $scope.checkName = function(data) {
+            console.log("user.name.onbeforesave:", data)
+            if (data !== 'awesome') {
+                return "Username should be `awesome`";
+            }
+        };
+
+        $scope.cancelChanges = function() {
+            angular.forEach(itemsPendingSave, function(user) {
+                var index = $scope.users.indexOf(user);
+                $scope.removeUser(index);
+            });
+            itemsPendingSave = [];
+            $scope.tableform.$cancel();
+        };
+
+        $scope.removeUser = function(index) {
+            $scope.users.splice(index, 1);
+        };
+
+        $scope.saveTable = function() {
+            //$scope.users already updated
+
+            console.log("tableform.onaftersave");
+            var results = [];
+            itemsPendingSave = [];
+            angular.forEach($scope.users, function(user) {
+                results.push($http.post('/saveUser', user));
+            })
+            return $q.all(results);
+        };
+
+        // add user
+        $scope.addUser = function() {
+            var newUser = {
+                id: $scope.users.length,
+                name: '',
+                status: null,
+                group: null
+            };
+            $scope.users.push(newUser);
+            itemsPendingSave.push(newUser);
+
+            if (!$scope.tableform.$visible) {
+                $scope.tableform.$show();
+            }
+            // Hack to be able to add a record and have focus set to the new row
+            $timeout(function() {
+                newUser.isFocused = true;
+            }, 0);
+        };
+    });
+
+// mock $http requests
+    app.run(function($httpBackend) {
+        $httpBackend.whenGET('/groups').respond([
+            {id: 1, text: 'user'},
+            {id: 2, text: 'customer'},
+            {id: 3, text: 'vip'},
+            {id: 4, text: 'admin'}
+        ]);
+
+        $httpBackend.whenPOST(/\/saveUser/).respond(function(method, url, data) {
+            data = angular.fromJson(data);
+            return [200, {status: 'ok'}];
+        });
+    });
+</script>

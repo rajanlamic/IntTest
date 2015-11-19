@@ -1,0 +1,46 @@
+#someNumbers {
+        width: 50%;
+        position: absolute;
+        top: 50px;
+        left: 50px;
+        
+        font-weight: bold;
+    }
+
+    #someNumbers div:nth-child(1) {
+        background: #020202;
+        width: 222px;
+        height: 222px;
+
+        border-radius: 5px;
+        list-style: none;
+        padding: 10px;
+    }
+
+    #someNumbers div table {
+        background: white;
+        width: 72px;
+        height: 72px;
+        float: left;
+        text-align: center;
+        vertical-align: middle;
+    }
+    
+    #someNumbers div:nth-child(2) {
+        font-size: 22px;
+        font-style: italic;
+        padding: 10px;
+        font-weight: normal;
+    }
+    
+    #someNumbers div ul {
+        list-style: none;
+        padding: 10px;
+    }
+    #someNumbers div ul li {
+        line-height: 30px;
+    }
+    
+    #someNumbers div ul li:nth-last-of-type(odd) {
+        background: #DEDEDE;
+    }

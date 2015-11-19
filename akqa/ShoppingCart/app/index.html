@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>AKQA Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles/style.css" />
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css' />
+        <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+        <script src="scripts/vendor/modenizr/modernizr.js"></script>
+    </head>
+    <body class="akqa_gradient">
+        <noscript>
+        Your browser does not support this app.
+        To render the shopping cart data and looped through them to get tabular structure,
+        I either need to write backend code which loops through data array and prints the tabular
+        structure data with JavaScript turned off which is not the case here as I am not writing 
+        backend code. The next option I am using here is JavaScript which is turned off for you now.
+        Either turn the javascript on or visit this link
+        <a href="nojstest.html"> Click here to display shoping cart in action without JavaScript tuned on </a>
+        </noscript>
+        
+        <main id="main"></main>
+        
+        <template id="mainTemplate">
+            <section id="basket">
+                <header>
+                    <h1>AKQA</h1>
+                </header>
+                <h1> Your Basket </h1>
+                <p>Items you have added in your basket are show below. <br />
+                    Adjust the quantities or remove items before continuing your purchase.
+                </p>
+                <table cellspacing="0" id="curentBasket" summary="This is a table of all current items in basket">
+                    <tr id="basketHeadingTemplate">
+                        <th id="product">Product</th>
+                        <th id="price">Price</th>
+                        <th id="quantity">Quantity</th>
+                        <th id="cost">Cost</th>
+                        <th id="deletebtn"></th>
+                    </tr>
+                    <tr>
+                        <td>Sub total</td>
+                        <td></td>
+                        <td></td>
+                        <td id="subTotal">£12.45</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>VAT @ 20%</td>
+                        <td></td>
+                        <td></td>
+                        <td id="vat">£2.78</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Total cost</th>
+                        <th></th>
+                        <th></th>
+                        <th id="total">£14.45</th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <td colspan="5">
+                            <button id="buynow">
+                                Buy Now »
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <div id="footer">
+                <p>© 2013 AKQA Ltd. Registered in England: 2964394</p>
+            </div>
+        </template>
+    
+        <template id="basketRowTemplate">
+             <tr>
+                 <td class="product" headers="product">{{product}}</td>
+                 <td class="price" headers="price">£{{price}}</td>
+                 <td headers="quantity">
+                     <div><input class="qty" type="text" value="{{qty}}" /></div>
+                     <div>
+                         <div class="add">+</div>
+                         <div class="subtract">-</div>
+                     </div>
+                 </td>
+                 <td class="cost" headers="cost">{{express(4,3)}}£{{cost}}</td>
+                 <td headers="deletebtn"><a class="delete" href="void(0);"><img src="images/delete.png" alt="delete product" alt="delete" /><a></td>
+             </tr>
+         </template>
+    
+        <script src="scripts/vendor/jquery/jquery-2.1.1.min.js"></script>
+        <script src="scripts/akqa.js"></script>
+        <script src="scripts/models/basket.js"></script>
+        <script src="scripts/controllers/basket.js"></script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<p class="lead">
+    Issues {{ searchTerm}}
+</p>
+
+<div class="table-responsive">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Comments URL</th>
+            <th>Created at</th>
+            <th>Updated at</th>
+            <th>state</th>
+        </tr>
+        <tr ng-repeat="item in searchResult">
+            <td>{{ item.id }}</td>
+            <td>{{ item.comments_url }}</td>
+            <td>{{ item.created_at }}</td>
+            <td>{{ item.updated_at }}</td>
+            <td>{{ item.state }}</td>
+        </tr>
+    </table>
+</div>

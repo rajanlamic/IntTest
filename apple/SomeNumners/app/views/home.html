@@ -1,0 +1,19 @@
+<div id="someNumbers">
+    <div>
+        <table ng-repeat="number in numbers" border=5>
+            <tr>
+                <td> {{ number }} </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        Some Numbers
+    </div>
+    <div>
+        <ul>
+            <li ng-repeat="questionsAndAnswer in questionsAndAnswers">
+                {{ questionsAndAnswer.question }} - {{ questionsAndAnswer.answer }}
+            </li>
+        </ul>
+    </div>
+</div>

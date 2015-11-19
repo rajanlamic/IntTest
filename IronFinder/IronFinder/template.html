@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="content">
+            <div id="supplierbody">
+                <div id="suppliercontent">
+
+                    <!-- new code -->
+                    <link href="/wcsstore/argos/question-manager/css/question-manager.min.css" rel="stylesheet" type="text/css">
+
+                    <div id="questionManager"><!-- questionManager -->
+
+                        <img src="/wcsstore/argos/question-manager/img/header.png" class="header-img"/>
+
+                        <div class="cta clearfix">
+                            <p>Simply answer these few questions:</p>
+                            <!-- question progress -->
+                            <ul id="questionProgress">
+                                <!--  <li class="active complete"><a href="#"></a></li> -->
+                                <li id="{{id}}" class="inactive incomplete progressChecker" onclick="listenQuestionProgress('{{id}}', 'question-{{id}}', '{{previous}}')" onmouseover="listenQuestionProgressMouseOver('{{id}}', 'question-{{id}}', '{{previous}}')"><a href="javascript:void(0)"></a></li>
+                            </ul>
+                            <!-- end question progress -->
+                            <span class="last"></span>
+                        </div>
+
+                        <div class="wrapper" class="clearfix">
+                            <div class="options" id="questions">
+                                <!-- answers -->
+                                <div id="question-{{id}}" class="step active lowerQuestions" style="display:none;">
+                                    <div class="question">
+                                        <h2>Question {{id}}:</h2>
+                                        <h3>{{name}}?</h3>
+                                        <p class="answerDescription">{{description}}.</p>
+                                        <ul class="selectorchoice clearfix" id="answer-{{id}}">
+                                            <li class="stepchoice" id="{{aid}}" onclick="listenAnswer('{{aid}}', '{{score}}', '{{next}}', '{{id}}')"><a href="javascript:void(0)"><img src="/wcsstore/argos/question-manager/img/{{aid}}.png" /></a></li>
+                                        </ul>
+
+                                    </div>
+                                </div><!-- end answers -->
+                            </div>
+                        </div><!-- end new code -->
+                    </div><!-- end questionManager -->
+
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="/wcsstore/argos/question-manager/js/jquery.js"></script>
+        <script type="text/javascript" src="/wcsstore/argos/question-manager/js/QuestionManger.js"></script>   
+    </body>
+</html>

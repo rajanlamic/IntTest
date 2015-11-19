@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Demo API App</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    </head>
+    <body ng-app="demoApiApp">
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active"><a ng-href="#">Home</a></li>
+                    <li><a ng-href="#/register">Register</a></li>
+                    <li><a ng-href="#/signin">Sign In</a></li>
+                    <li><a ng-href="#/userdetails">User Details</a></li>
+                    <li><a ng-href="#/usertitles">User Titles</a></li>
+                </ul>
+            </div>
+            <div class="jumbotron">
+                <h1>Demo API APp</h1>
+                <h1> {{ welcome }} </h1>
+                <div ng-view></div>
+            </div>
+            <div class="footer">
+                <p><span class="glyphicon glyphicon-heart"></span> Footer</p>
+            </div>
+        </div>
+
+        <script src="../bower_components/requirejs/require.js" data-main="scripts/main.js"></script>
+
+    </body>
+</html>

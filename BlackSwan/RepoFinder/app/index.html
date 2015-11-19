@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Black Swan Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css">
+    </head>
+
+    <!-- Angular app with routers -->
+    <body ng-app="repoFinderApp">
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li class="active"><a ng-href="#">Home</a></li>
+                    <li><a ng-href="#/search">Search</a></li>
+                    <li><a ng-href="#/issues">Issues</a></li>
+                </ul>
+            </div>
+            <div class="jumbotron">
+                <h1>Repo Finder App</h1>
+                <div ng-view></div>
+            </div>
+
+            <div class="footer">
+                <p><span class="glyphicon glyphicon-heart"></span> Footer</p>
+            </div>
+        </div>
+
+        <script src="../bower_components/requirejs/require.js" data-main="scripts/main.js"></script>
+
+    </body>
+</html>

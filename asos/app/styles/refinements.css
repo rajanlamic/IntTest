@@ -1,0 +1,201 @@
+html {
+  font-size: 20px;
+}
+ul, li {
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+
+.refinements {
+  margin: 0 auto;
+  width: 166px;
+  position: relative;
+}
+.refinements a.refinement-header:active, .refinements a.refinement-header:hover, .refinements a.refinement-header:visited {
+  color: #000;
+}
+.refinements h2 {
+  border-bottom: 1px solid #999;
+  color: #000;
+  display: inline-block;
+  font-family: Georgia;
+  font-size: 1.02em;
+  font-weight: normal;
+  line-height: 1em;
+  margin: 0;
+  padding: 6px 0 15px;
+  text-transform: uppercase;
+  width: 100%;
+}
+.refinements[data-hasanyselected='False'] a.clear-filter,
+.refinements[data-hasanyselected='false'] a.clear-filter {
+  display: none;
+}
+.refinements a.clear-filter {
+  color: #666;
+  font-size: 0.65rem;
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+  text-decoration: none;
+  top: 4px;
+}
+.refinements a.clear-filter:hover {
+  text-decoration: underline;
+}
+.refinements .panel {
+  border-bottom: 1px solid #999;
+  clear: both;
+  padding: 0 0 6px;
+  position: relative;
+}
+.refinements .panel:last-of-type {
+  border: none;
+}
+.refinements .panel a {
+  line-height: 0.95em;
+  position: relative;
+  text-decoration: none;
+}
+.refinements .panel a h3 {
+  line-height: 0.9em;
+  margin: 4px 0 1px;
+  position: relative;
+  text-transform: uppercase;
+}
+.refinements .panel a h3 span.facet-arrow[data-state='open'] {
+  border-color: #666666 rgba(102, 102, 102, 0) rgba(102, 102, 102, 0) rgba(102, 102, 102, 0);
+  border-style: solid;
+  border-width: 5px;
+  height: 0;
+  width: 0;
+  left: 1px;
+  position: absolute;
+  top: 10px;
+}
+.no-rgba .refinements .panel a h3 span.facet-arrow[data-state='open'] {
+  border-color: #666666 transparent transparent transparent;
+}
+.ie7 .refinements .panel a h3 span.facet-arrow[data-state='open'], .ie8 .refinements .panel a h3 span.facet-arrow[data-state='open'] {
+  border-width: 5px;
+}
+.refinements .panel a h3 span.facet-arrow[data-state='closed'] {
+  border-color: rgba(102, 102, 102, 0) rgba(102, 102, 102, 0) rgba(102, 102, 102, 0) #666666;
+  border-style: solid;
+  border-width: 5px;
+  height: 0;
+  width: 0;
+  left: 4px;
+  position: absolute;
+  top: 7px;
+}
+.no-rgba .refinements .panel a h3 span.facet-arrow[data-state='closed'] {
+  border-color: transparent transparent transparent #666666;
+}
+.ie7 .refinements .panel a h3 span.facet-arrow[data-state='closed'], .ie8 .refinements .panel a h3 span.facet-arrow[data-state='closed'] {
+  border-width: 5px;
+}
+.refinements .panel a h3 span.facet-name {
+  display: inline;
+  font-size: 0.51em;
+  margin: 0 0 0 14px;
+}
+.refinements .panel a.clear-filter {
+  position: absolute;
+  top: 8px;
+}
+.refinements .panel[data-displaystyle='two-column'] div.options {
+  *zoom: 1;
+}
+.refinements .panel[data-displaystyle='two-column'] div.options:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.refinements .panel[data-displaystyle='two-column'] div.options ul li {
+  clear: none;
+  float: left;
+  margin: 1px 0 0;
+  width: 49%;
+}
+.refinements .panel .options.scrollable {
+  border: 1px solid #ccc;
+  margin: 7px 0 4px;
+  max-height: 132px;
+  overflow: auto;
+}
+.refinements .panel .options.scrollable ul {
+  margin: 0 0 5px;
+}
+.refinements .panel div.options {
+  margin: 7px 0 7px;
+}
+.refinements .panel div.options ul li {
+  line-height: 0.85em;
+  margin: 0 0 0 1px;
+}
+.refinements .panel div.options ul li input[type="checkbox"] {
+  cursor: auto;
+  height: 8px;
+  left: -8px;
+  opacity: 0;
+  position: absolute;
+  width: 8px;
+}
+.refinements .panel div.options ul li input[type="checkbox"] ~ label {
+  color: #666666;
+  cursor: pointer;
+  font-size: 0.66em;
+}
+.refinements .panel div.options ul li input[type="checkbox"] ~ label::before {
+  background: white;
+  border: 1px solid #666666;
+  content: "";
+  cursor: pointer;
+  height: 8px;
+  margin: -4px 5px 0 0;
+  vertical-align: text-top;
+  width: 8px;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+}
+.refinements .panel div.options ul li input[type="checkbox"] ~ label a {
+  color: #666666;
+}
+.refinements .panel div.options ul li input[type="checkbox"] ~ label a:hover {
+  color: #666666;
+  text-decoration: underline;
+}
+.refinements .panel div.options ul li input[type="checkbox"]:hover ~ label {
+  text-decoration: underline;
+}
+.refinements .panel div.options ul li input[type="checkbox"]:checked ~ label::before {
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNS4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMTJweCIgaGVpZ2h0PSI5cHgiIHZpZXdCb3g9IjAgMCAxMiA5IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAxMiA5IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwb2x5Z29uIGZpbGw9IiM2NjY2NjYiIHBvaW50cz0iMi4zNjgsNS4wMjggMy40NzcsNi4wMjEgNy4wNjMsMS45NTIgOC4xNjcsMy4wNDEgMy41NDIsOC4xNiAxLjM5OSw2LjIzMSAiLz4NCjwvc3ZnPg0K);
+  background-position: -1px -1px;
+  background-repeat: no-repeat;
+}
+.refinements .panel div.options ul li input[type="checkbox"]:disabled ~ label::before {
+  border: 1px solid #000;
+  cursor: default;
+  opacity: 0.35;
+  text-decoration: none;
+}
+.refinements .panel div.options ul li input[type="checkbox"]:disabled ~ label {
+  cursor: default;
+  opacity: 0.35;
+  text-decoration: none;
+}
+.refinements .panel div.options ul li input[type="checkbox"]:disabled ~ label a {
+  cursor: default;
+}
+.refinements .panel div.options ul li span.count {
+  display: none;
+}
+.refinements .panel[data-hasselections='false'] a.clear-filter {
+  display: none;
+}

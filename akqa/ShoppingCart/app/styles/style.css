@@ -1,0 +1,164 @@
+#main {
+    width: 100%;
+    font-family: 'Droid Sans', sans-serif;
+     
+}
+
+#main #basket {
+    margin: auto;
+    width: 60%;
+}
+
+#main #basket header h1 {
+    font-weight: normal;
+    font-size: 42px;
+    /*font-family: 'Droid Serif', serif;*/
+}
+
+#main #basket h1 {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+#main #basket p {
+    font-size: 13px;
+}
+
+#main #basket #curentBasket {
+    width: 100%;
+    margin-top: 60px;
+}
+
+#main #basket #curentBasket tr:nth-child(1) th {
+    border-bottom: 2px solid #787878;
+    padding: 0 10px;
+    text-align: left;
+}
+
+#main #basket #curentBasket tr:nth-child(1) th:nth-child(2n) {
+    text-align: center;
+}
+
+#main #basket #curentBasket tr:nth-child(n+2) td {
+    padding: 10px;
+    text-align: left;
+}
+
+#main #basket #curentBasket tr:nth-child(n+2) td:nth-child(2n) {
+    text-align: center;
+}
+
+#main #basket #curentBasket tr:nth-child(n+2) td:nth-child(2n) {
+    text-align: center;
+}
+
+#main #basket #curentBasket  tr:nth-child(2n+3) {
+    background: #DDDDDD;
+}
+
+#main #basket #curentBasket  tr:nth-last-child(-n+4){
+    background: none;
+}
+
+#main #basket #curentBasket  tr:nth-last-child(-n+2) th:nth-child(1) {
+    text-align: left;
+    padding-left: 10px;
+}
+
+#main #basket #curentBasket  tr:nth-last-child(-n+2) th,
+#main #basket #curentBasket  tr:nth-last-child(1) td {
+    padding-top: 30px;
+}
+
+#main #basket #curentBasket  tr:nth-last-child(-n+3) td,
+#main #basket #curentBasket  tr:nth-last-child(-n+4) td {
+    color: #919191;
+}
+
+#main #basket #curentBasket  tr:nth-last-child(4) td {
+    padding-top: 40px;
+}
+
+#main #basket #curentBasket  tr:nth-last-child(1) td button {
+    color: #FFFFFF;
+    background: #000065;
+    height: 50px;
+    width: 130px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+#main #basket #curentBasket  tr:nth-last-child(1) td button.inactive {
+    background: #999999;
+    cursor: none;
+}
+
+#main #basket #curentBasket tr:nth-child(n+2) td:nth-child(3) div:nth-child(1){
+    width: 40px;
+    float: left;
+}
+
+#main #basket #curentBasket tr:nth-child(n+2) td:nth-child(3) div:nth-child(1) input {
+    width: 35px;
+    height: 28px;
+    border: 1px solid #999999;
+}
+
+#main #basket #curentBasket tr:nth-child(n+2) td:nth-child(3) div:nth-child(2){
+    width: 40px;
+    float: left;
+}
+
+#main #basket #curentBasket tr:nth-child(n+2) td:nth-child(3) div:nth-child(2) div {
+    width: 20px;
+    height: 15px;
+    line-height: 15px;
+    vertical-align: middle;
+    clear: both;
+    background: #999999;
+    margin-left: 4px;
+    text-align: center;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+#main #basket #curentBasket tr:nth-child(n+2) td:nth-child(3) div:nth-child(2) div:nth-child(2) {
+    margin-top: 2px;
+}
+
+.akqa_gradient {
+    background: -webkit-linear-gradient(#FFFFFF, #DADADA);
+    background: -o-linear-gradient(#FFFFFF, #DADADA);
+    background: -moz-linear-gradient(#FFFFFF, #DADADA);
+    background: linear-gradient(#FFFFFF, #DADADA);
+}
+
+#footer {
+    background: #666666;
+    width: 100%;
+    clear:both;
+    text-align: center;
+    padding: 5px;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+
+@media (min-width: 1024px) {
+    #main {
+        width: 1024px; 
+    }
+}
+
+@media (max-width: 600px) {
+    #main #basket {
+        width: 100%;
+    }
+    #main #basket #curentBasket  tr:nth-last-child(1) td button {
+        float: left;
+    }
+}

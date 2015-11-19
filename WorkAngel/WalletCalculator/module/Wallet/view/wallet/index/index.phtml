@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="/app/wallet/css/style.css" />
+<script src="/js/angular.js"></script>
+<div class="container-fluid">
+    <div ng-app="walletApp" ng-controller="calculatorController" class="row">
+        <input type="text" valid-number required  ng-model="valueToAdd" value="" />
+        <button ng-click="walletCalculator.add()">Add</button>
+
+        <div class="row">
+            <div class="col-xs-4">Date</div>
+            <div class="col-xs-4">Amount</div>
+        </div>
+
+        <div class="row" ng-repeat="content in walletCalculator.walletContents">
+            <div class="col-xs-3"><input ng-readonly="true" type="text" value="{{content.date}}"></div>
+            <div class="col-xs-3"><input type="text" value="{{content.amount| currency : '£'}}"></div>
+            <div class="col-xs-3"><button ng-click="walletCalculator.remove($index)">Remove</button></div>
+            <div class="col-xs-3"><button ng-click="walletCalculator.edit($index)">Edit</button></div>
+        </div>
+        <div class="col-xs-12">Balance {{walletCalculator.getBalance() | currency : '£'}} <br>
+            Alternatively <br>
+            <span  ng-bind="walletCalculator.getBalance() | currency : '£'"></span>
+        </div>
+    </div>
+
+</div>
+</div>
+<script src="/app/wallet/app.js"></script>
+<script src="/app/wallet/config/config.js"></script>
+<script src="/app/wallet/service/operationService.js"></script>
+<script src="/app/wallet/directive/validNumber.js"></script>
+<script src="/app/wallet/controller/calculatorController.js"></script>

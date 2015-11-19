@@ -1,0 +1,1 @@
+var walletApp = angular.module('walletApp', []);
